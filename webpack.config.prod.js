@@ -1,5 +1,5 @@
-//const ExtractTextPlugin = require('extract-text-webpack-plugin');
-//const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: './app/App.js',
@@ -8,8 +8,8 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
-        //new ExtractTextPlugin({ filename: '[name].css', disable: false, allChunks: true }),
-        //new OptimizeCssAssetsPlugin()
+        new ExtractTextPlugin({ filename: '[name].css', disable: false, allChunks: true }),
+        new OptimizeCssAssetsPlugin()
     ],
     module: {
       rules: [{
@@ -22,8 +22,7 @@ module.exports = {
       },
       {
           test: /\.scss$/,
-          //loader: ExtractTextPlugin.extract('css-loader!sass-loader')
-          loader: 'style-loader!css-loader!sass-loader'
+          loader: ExtractTextPlugin.extract('css-loader!sass-loader')
       }],
     },
 }
