@@ -1,3 +1,4 @@
+
 const webpack = require('webpack');
 
 module.exports = {
@@ -10,6 +11,9 @@ module.exports = {
       port: 8080,
       contentBase: './public'
     },
+    resolve: {
+      extensions: ['.js', '.jsx']
+    },
     module: {
       rules: [{
           test: /\.js$/,
@@ -17,7 +21,8 @@ module.exports = {
           use: [{
             loader: 'babel-loader',
             options: {
-              presets: ['es2015','react']
+              presets: ['es2015','react'],
+              plugins: ['transform-object-rest-spread']
             }
           }],
       },
