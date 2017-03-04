@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -17,7 +18,9 @@ module.exports = {
           exclude: [/node_modules/],
           use: [{
             loader: 'babel-loader',
-            options: { presets: ['es2015','react'] }
+            options: {
+              presets: ['es2015','react']
+            }
           }],
       },
       {
