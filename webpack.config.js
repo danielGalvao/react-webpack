@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
     entry: './app/App.js',
     output: {
-        path: __driname+'/public',
+        path: __dirname+'/public',
         filename: './bundle.js'
     },
     devServer: {
@@ -13,7 +13,7 @@ module.exports = {
     },
     module: {
       rules: [{
-          test: /\.jsx$/,
+          test: /\.js$/,
           exclude: [/node_modules/],
           use: [{
             loader: 'babel-loader',
