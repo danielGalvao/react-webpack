@@ -1,19 +1,19 @@
-//const ExtractTextPlugin = require('extract-text-webpack-plugin');
-//const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+const webpack = require('webpack');
 
 module.exports = {
     entry: './app/App.js',
     output: {
-        path: './public',
-        filename: 'bundle.js'
+        path: __driname+'/public',
+        filename: './bundle.js'
     },
-    plugins: [
-        //new ExtractTextPlugin({ filename: '[name].css', disable: false, allChunks: true }),
-        //new OptimizeCssAssetsPlugin()
-    ],
+    devServer: {
+      port: 8080,
+      contentBase: './public'
+    },
     module: {
       rules: [{
-          test: /\.js$/,
+          test: /\.jsx$/,
           exclude: [/node_modules/],
           use: [{
             loader: 'babel-loader',
@@ -22,7 +22,6 @@ module.exports = {
       },
       {
           test: /\.scss$/,
-          //loader: ExtractTextPlugin.extract('css-loader!sass-loader')
           loader: 'style-loader!css-loader!sass-loader'
       }],
     },
